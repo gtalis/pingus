@@ -62,7 +62,7 @@ find_package(PkgConfig)
 pkg_search_module(SDL REQUIRED sdl)
 pkg_search_module(SDL_IMAGE REQUIRED SDL_image)
 pkg_search_module(SDL_MIXER REQUIRED SDL_mixer)
-pkg_search_module(PNG REQUIRED libpng12)
+pkg_search_module(PNG REQUIRED libpng)
 
 find_package(Boost 1.56 REQUIRED COMPONENTS signals) 
 
