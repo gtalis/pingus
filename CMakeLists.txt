@@ -1,5 +1,11 @@
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 2.8.5)
 project(pingus)
+
+set(PROJECT_VERSION_MAJOR 0)
+set(PROJECT_VERSION_MINOR 7)
+set(PROJECT_VERSION_PATCH 6)
+set(PROJECT_VERSION "${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}.${PROJECT_VERSION_PATCH}")
+
 
 file(GLOB sources
 	external/tinygettext/tinygettext/*.cpp
@@ -56,7 +62,7 @@ include_directories(src
 
 add_executable(pingus ${sources})
 
-target_compile_options(pingus PUBLIC -std=c++11 -DVERSION="0.7.6")
+target_compile_options(pingus PUBLIC -std=c++11 -DVERSION="${PROJECT_VERSION}")
 
 find_package(PkgConfig)
 pkg_search_module(SDL REQUIRED sdl)
@@ -79,4 +85,7 @@ target_link_libraries(pingus
 	${PNG_LIBRARIES}
 )
 
-target_link_libraries(pingus Boost::signals)
+target_link_libraries(pingus boost_signals)
+
+install(TARGETS pingus DESTINATION bin)
+install(DIRECTORY data/ DESTINATION share/pingus)
